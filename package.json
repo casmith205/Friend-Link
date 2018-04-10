@@ -16,7 +16,10 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
   "bugs": {
     "url": "https://github.com/casmith205/friend-finder/issues"
   },
