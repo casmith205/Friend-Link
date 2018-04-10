@@ -1,0 +1,12 @@
+body{
+    color: white;
+    background-image: url("./imgs/footer_lodyas.png")
+}
+
+#matchLabel{
+    background-image: url("./imgs/footer_lodyas.png")
+}
+
+#matchImg{
+    width: 100%;
+}
