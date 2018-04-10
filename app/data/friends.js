@@ -19,4 +19,4 @@ var friendArr = [
 ];
 
 // Exporting the Array
-module.exports = friendArray;
+module.exports = friendArr;
