@@ -170,6 +170,26 @@
             </div>
         </div>
 
+        <div class="modal" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="matchLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="matchLabel">Meet your best match!</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 id="matchName"></h3>
+                        <img id="matchImg" src="https://www.theodysseyonline.com/spongebob-and-patrick-is-my-best-friend-and-me" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             <div class="container">
                 <p>
@@ -188,12 +208,6 @@
     $(".submit").on("click", function (event) {
         event.preventDefault();
         // **NEED TO MAKE SURE THERE ARE NO BLANKS**************
-        // **NEED TO HAVE A MODAL POP UP -- creat modal in HTML, then push to it
-        //  **NEED TO CREAT FUNCTION IN API ROUTE TO DETERMINE BEST MATCH  
-        // $("#matchName").text(data.name);
-        // $('#matchImg').attr("src", data.photo);
-        // // Show the modal with the best match 
-        // $("#resultsModal").modal('toggle');
 
         var answerArr = [];
         for (i = 1; i < 11; i++) {
@@ -210,14 +224,17 @@
 
         $.post("/api/friends", newFriend,
             function (data) {
+                $("#matchName").text(data.name);
+                $('#matchImg').attr("src", data.photo);
+                // Show the modal with the best match 
+                $("#matchModal").modal('toggle');
                 // Clear the form when submitting
                 $("#inputName").val("");
                 $("#inputPic").val("");
                 for (i = 1; i < 11; i++) {
-                    $("#" + ("q" + i)).val("1");
+                    $("#" + ("q" + i)).val("");
                 };
             });
 
     });
-
 </script>
