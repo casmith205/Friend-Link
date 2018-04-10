@@ -9,30 +9,9 @@ module.exports = function(app) {
   });
 
   // API POST Requests
-  // When a user submits form data (a JSON object), the JSON is pushed to the appropriate JavaScript array
+  // When a user submits form data (a JSON object), the JSON is pushed to the array
   app.post("/api/friends", function(req, res) {
-    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-    // It will do this by sending out the value "true" have a table
-    // req.body is available since we're using the body-parser middleware
-    if (tableData.length < 5) {
-      tableData.push(req.body);
-      res.json(true);
-    }
-    else {
-      waitListData.push(req.body);
-      res.json(false);
-    }
+      friends.push(req.body);
   });
 
-  // ---------------------------------------------------------------------------
-  // I added this below code so you could clear out the table while working with the functionality.
-  // Don"t worry about it!
-
-  app.post("/api/clear", function() {
-    // Empty out the arrays of data
-    tableData = [];
-    waitListData = [];
-
-    console.log(tableData);
-  });
 };
