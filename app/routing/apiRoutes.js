@@ -31,10 +31,10 @@ module.exports = function (app) {
 		for  (var i=0; i< friends.length; i++) {
       totalDifference = 0;
 			// Loop through all the scores of each friend in database
-			for (var j=0; j< friends[i].scores[j]; j++){
+			for (var j=0; j< friends[i].scores.length; j++){
         // Calc the diff between the scores and sum them into the totalDifference
         // Takes the absolute value of the userScore at position j minus friend at position i's score at position j
-				totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
+				totalDifference += Math.abs(userScores[j]) - (friends[i].scores[j]);
 
 				// If the sum of differences is less then the differences of the current match
 				if (totalDifference <= match.diffScore){
