@@ -34,7 +34,7 @@ module.exports = function (app) {
 			for (var j=0; j< friends[i].scores.length; j++){
         // Calc the diff between the scores and sum them into the totalDifference
         // Takes the absolute value of the userScore at position j minus friend at position i's score at position j
-				totalDifference += Math.abs(userScores[j]) - (friends[i].scores[j]);
+				totalDifference += Math.abs((userScores[j]) - (friends[i].scores[j]));
 
 				// If the sum of differences is less then the differences of the current match
 				if (totalDifference <= match.diffScore){
@@ -42,16 +42,17 @@ module.exports = function (app) {
 					// Update the match to be the friend at position i
 					match.name = friends[i].name;
 					match.photo = friends[i].photo;
-					match.friendDifference = totalDifference;
+					match.diffScore = totalDifference;
 				}
 			}
 		}
 
     // Push userData to friendArr after match is found (otherwise, you will always be your own best friend!)
 		friends.push(userData);
-
+    console.log(totalDifference)
 		// Return JSON with the user's match. This is what will be used to populate the modal
-		res.json(match);
+    res.json(match);
+    console.log(match);
   });
 
 };

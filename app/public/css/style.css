@@ -1,12 +1,53 @@
 body{
     color: white;
-    background-image: url("./imgs/footer_lodyas.png")
+    background-image: url("/imgs/footer_lodyas")
 }
 
-#matchLabel{
-    background-image: url("./imgs/footer_lodyas.png")
+.jumbotron{
+    margin: 20px;
+    background-color: slategray;
 }
 
+hr{
+    background-color: white;
+}
+
+h1{
+    padding: 20px 0px 20px 0px;
+}
+
+footer{
+    margin: 20px;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+a:hover{
+    color: slategray;
+    text-decoration-line: none;
+}
+
+.btn{
+    background-color: slategray;
+    border-color: slategray;
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
+.modal-header{
+    background-image: url("/imgs/footer_lodyas")
+}
+
+.modal-body{
+    color: black;
+}
 #matchImg{
     width: 100%;
 }

@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <title>Friend Finder</title>
     <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link type="text/css" media="screen" href="/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style">
 </head>
 
 <body>
@@ -16,23 +15,26 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>Survey Questions</h1>
+                <hr>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form role="form">
                             <h3>Background Information</h3>
                             <div class="form-group">
-                                <label for="inputName">Name</label>
+                                <label for="inputName">Name (Required)</label>
                                 <input type="text" class="form-control" id="inputName">
                             </div>
                             <div class="form-group">
-                                <label for="inputPic">Link to picture</label>
+                                <label for="inputPic">Link to picture (Required)</label>
                                 <input type="text" class="form-control" id="inputPic">
                             </div>
                             <hr>
                             <h3>Personality Questions</h3>
-                            <h4>Answer the following with a value between 1 - 5, 1 being 'Strongly Disagree', and 5 being 'Strongly
-                                Agree.'
-                            </h4>
+                            <h5>
+                                <i>Answer the following with a value between 1 - 5, 1 being 'Strongly Disagree', and 5 being
+                                    'Strongly Agree.'
+                                </i>
+                            </h5>
                             <br>
                             <div class="form-group">
                                 <h4>Question 1</h4>
@@ -182,7 +184,7 @@
                     </div>
                     <div class="modal-body">
                         <h3 id="matchName"></h3>
-                        <img id="matchImg" src="https://www.theodysseyonline.com/spongebob-and-patrick-is-my-best-friend-and-me" alt="">
+                        <img id="matchImg">
                     </div>
                 </div>
             </div>
@@ -198,41 +200,11 @@
 
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+<script src="/submit"></script>
 
 </html>
-
-<script type="text/javascript">
-    // "POSTS" our form data to our express server.
-    $(".submit").on("click", function (event) {
-        event.preventDefault();
-        // **NEED TO MAKE SURE THERE ARE NO BLANKS**************
-
-        var answerArr = [];
-        for (i = 1; i < 11; i++) {
-            answerArr.push($("#" + ("q" + i)).val().trim());
-        };
-
-        var newFriend = {
-            name: $("#inputName").val().trim(),
-            photo: $("#inputPic").val().trim(),
-            scores: answerArr
-        };
-
-        console.log(newFriend);
-
-        $.post("/api/friends", newFriend,
-            function (data) {
-                $("#matchName").text(data.name);
-                $('#matchImg').attr("src", data.photo);
-                // Show the modal with the best match 
-                $("#matchModal").modal('toggle');
-                // Clear the form when submitting
-                $("#inputName").val("");
-                $("#inputPic").val("");
-                for (i = 1; i < 11; i++) {
-                    $("#" + ("q" + i)).val("");
-                };
-            });
-
-    });
-</script>
