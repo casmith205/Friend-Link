@@ -4,7 +4,6 @@
   "description": "Project demonstrating the use of the Express.js framework",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
@@ -16,9 +15,6 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4"
-  },
-  "scripts": {
-    "start": "node server.js"
   },
   "bugs": {
     "url": "https://github.com/casmith205/friend-finder/issues"
