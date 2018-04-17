@@ -1,4 +1,4 @@
-# Friend Finder
+# Friend Matcher
 
 ## About
 Friend Finder is a web application where you answer 10 simple questions and get matched with your new best friend!
